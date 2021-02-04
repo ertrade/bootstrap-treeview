@@ -263,11 +263,14 @@
 		var _this = this;
 		$.each(node.nodes, function checkStates(index, node) {
 
-			// nodeId : unique, incremental identifier
-			node.nodeId = _this.nodes.length;
+			node.nodeId = node.id;
 
 			// parentId : transversing up the tree
 			node.parentId = parent.nodeId;
+
+			if (node.hasOwnProperty('dataAttributes')) {
+				node.dataAttributes = node.dataAttributes;
+			}
 
 			// if not provided set selectable default value
 			if (!node.hasOwnProperty('selectable')) {
@@ -519,6 +522,9 @@
 				.addClass(node.searchResult ? 'search-result' : '') 
 				.attr('data-nodeid', node.nodeId)
 				.attr('style', _this.buildStyleOverride(node));
+			$.each(node.dataAttributes, function addDataAttribute(i, dataAttribute) {
+				treeItem.attr('data-'+dataAttribute.name, dataAttribute.value);
+			});
 
 			// Add indent/spacer to mimic tree structure
 			for (var i = 0; i < (level - 1); i++) {
