@@ -308,7 +308,7 @@
 			}
 
 			// index nodes in a flattened structure for use later
-			_this.nodes.push(node);
+			_this.nodes[node.nodeId] = node;
 
 			// recurse child nodes and transverse the tree
 			if (node.nodes) {
