@@ -101,6 +101,7 @@
 			remove: $.proxy(this.remove, this),
 
 			// Get methods
+			getNodes: $.proxy(this.getNodes, this),
 			getNode: $.proxy(this.getNode, this),
 			getParent: $.proxy(this.getParent, this),
 			getSiblings: $.proxy(this.getSiblings, this),
@@ -703,6 +704,14 @@
 
 	Tree.prototype.css = '.treeview .list-group-item{cursor:pointer}.treeview span.indent{margin-left:10px;margin-right:10px}.treeview span.icon{width:12px;margin-right:5px}.treeview .node-disabled{color:silver;cursor:not-allowed}'
 
+
+	/**
+		Returns all tree nodes.
+		@return {Array} nodes - All nodes in tree
+	*/
+	Tree.prototype.getNodes = function () {
+		return this.nodes;
+	}
 
 	/**
 		Returns a single node object that matches the given node id.
