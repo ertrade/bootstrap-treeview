@@ -1191,6 +1191,9 @@
 
 		var _this = this;
 		return $.grep(this.nodes, function (node) {
+			if (!node) {
+				return false;
+			}
 			var val = _this.getNodeValue(node, attribute);
 			if (typeof val === 'string') {
 				return val.match(new RegExp(pattern, modifier));
