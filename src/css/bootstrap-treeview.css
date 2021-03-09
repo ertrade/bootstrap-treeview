@@ -28,7 +28,12 @@
 
 .treeview span.icon {
 	width: 12px;
-	margin-right: 5px;
+	margin-right: 0 !important;
+}
+
+.treeview span.empty-icon {
+	width: 0;
+	margin-right: 0 !important;
 }
 
 .treeview .node-disabled {

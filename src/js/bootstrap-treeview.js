@@ -35,7 +35,7 @@
 
 		expandIcon: 'glyphicon glyphicon-plus',
 		collapseIcon: 'glyphicon glyphicon-minus',
-		emptyIcon: 'glyphicon',
+		emptyIcon: 'glyphicon empty-icon',
 		nodeIcon: '',
 		selectedIcon: '',
 		checkedIcon: 'glyphicon glyphicon-check',
@@ -526,11 +526,15 @@
 			$.each(node.dataAttributes, function addDataAttribute(i, dataAttribute) {
 				treeItem.attr('data-'+dataAttribute.name, dataAttribute.value);
 			});
+			var padding = 11 + level * 20;
+			treeItem.css('padding-left', padding);
 
 			// Add indent/spacer to mimic tree structure
-			for (var i = 0; i < (level - 1); i++) {
-				treeItem.append(_this.template.indent);
-			}
+			// for (var i = 0; i < (level - 1); i++) {
+			// 	if (node.nodes) {
+			// 		treeItem.append(_this.template.indent);
+			// 	}
+			// }
 
 			// Add expand, collapse or empty spacer icons
 			var classList = [];
@@ -557,6 +561,9 @@
 			if (_this.options.showIcon) {
 				
 				var classList = ['node-icon'];
+				if (!node.nodes) {
+					classList.push('empty-icon');
+				}
 
 				classList.push(node.icon || _this.options.nodeIcon);
 				if (node.state.selected) {
