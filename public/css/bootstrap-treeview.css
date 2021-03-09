@@ -28,11 +28,11 @@
 
 .treeview span.icon {
 	width: 12px;
-	margin-right: 0 !important;
+	margin-right: 4px !important;
 }
 
 .treeview span.empty-icon {
-	width: 0;
+	width: 0 !important;
 	margin-right: 0 !important;
 }
 
